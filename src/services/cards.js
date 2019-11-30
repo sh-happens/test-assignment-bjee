@@ -6,6 +6,7 @@ export const cardsService = {
 };
 
 function getCards(pageNumber) {
+  console.log("cardsService");
   const requestOptions = {
     method: "GET",
     headers: { "Content-Type": "application/json" }
