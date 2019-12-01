@@ -39,7 +39,6 @@ class App extends React.Component {
 }
 
 function mapStateToProps(state) {
-  console.log("state = ", state);
   const { alert } = state;
   return {
     alert
