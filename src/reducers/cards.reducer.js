@@ -40,6 +40,17 @@ export function cardsReducer(state = initialState, action) {
         pageNumber: action.pageNumber,
         totalTaskCount: action.cards.message.total_task_count
       };
+    case cardsConstants.CREATE_CARD_REQUEST:
+      return state;
+
+    case cardsConstants.CREATE_CARD_SUCCESS:
+      return {
+        ...state,
+        currentCard: action.newCard
+      };
+
+    case cardsConstants.CREATE_CARD_FAILURE:
+      return state;
 
     default:
       return state;

@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 
-import { cardsActions } from "./../actions";
-
+import { cardsActions, userActions } from "./../actions";
+import { Header } from "./../components";
 import { connect } from "react-redux";
 
 class MainPage extends Component {
@@ -13,6 +13,7 @@ class MainPage extends Component {
   componentDidMount() {
     const { dispatch } = this.props;
     dispatch(cardsActions.getCards(1, "username"));
+    dispatch(userActions.login("admin", "123"));
   }
 
   handleNextClick = () => {
@@ -61,8 +62,12 @@ class MainPage extends Component {
   };
 
   render() {
+    const { username } = this.props;
     return (
       <div>
+        <div className='App container'>
+          <Header username={username} />
+        </div>
         <h1>hello</h1>
         <select value={this.state.sortField} onChange={this.handleSortField}>
           <option value='username'>username</option>

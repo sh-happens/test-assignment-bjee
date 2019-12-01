@@ -3,7 +3,7 @@ import { Router, Route } from "react-router-dom";
 import { connect } from "react-redux";
 
 import { history } from "./helpers";
-import { alertActions } from "./actions";
+import { alertActions, userActions } from "./actions";
 import { MainPage } from "./pages";
 
 class App extends React.Component {
@@ -12,6 +12,7 @@ class App extends React.Component {
 
     const { dispatch } = this.props;
     dispatch(alertActions.success("Hi!"));
+    dispatch(userActions.logout());
     history.listen((location, action) => {
       dispatch(alertActions.clear());
     });
