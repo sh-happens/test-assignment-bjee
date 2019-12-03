@@ -9,3 +9,10 @@ export function handleResponse(response) {
     return data;
   });
 }
+
+export function responseToText(response) {
+  return Object.keys(response).reduce(
+    (acc, key) => acc + response[key] + "",
+    ""
+  );
+}

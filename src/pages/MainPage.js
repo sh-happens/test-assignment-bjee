@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 
 import { cardsActions, userActions } from "./../actions";
-import { Header } from "./../components";
+import { Header, CardView } from "./../components";
 import { connect } from "react-redux";
 
 class MainPage extends Component {
@@ -13,7 +13,6 @@ class MainPage extends Component {
   componentDidMount() {
     const { dispatch } = this.props;
     dispatch(cardsActions.getCards(1, "username"));
-    dispatch(userActions.login("admin", "123"));
   }
 
   handleNextClick = () => {
@@ -65,7 +64,7 @@ class MainPage extends Component {
     const { username } = this.props;
     return (
       <div>
-        <div className='App container'>
+        <div>
           <Header username={username} />
         </div>
         <h1>hello</h1>
@@ -84,7 +83,7 @@ class MainPage extends Component {
         <ul>
           {this.props.cards.map(card => {
             return (
-              <li key={card.id}>
+              <li key={card.id} editAllowed={username !== ""}>
                 <span style={{ paddingRight: 10 }}>{card.username}</span>
                 <span style={{ paddingRight: 10 }}>{card.email}</span>
                 <span style={{ paddingRight: 10 }}>{card.text}</span>
@@ -106,8 +105,9 @@ class MainPage extends Component {
 }
 
 function mapStateToProps(state) {
+  const { username } = state.user;
   const { cards, pageNumber, totalTaskCount } = state.cardsReducer;
-  return { cards, pageNumber, totalTaskCount };
+  return { cards, pageNumber, totalTaskCount, username };
 }
 
 const connectedComponent = connect(mapStateToProps, null)(MainPage);

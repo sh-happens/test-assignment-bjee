@@ -37,29 +37,27 @@ class Login extends Component {
     return username ? (
       <Redirect to='/' />
     ) : (
-      <div className='App container'>
+      <div>
         <Header username={username} />
-        <form onSubmit={e => e.preventDefault()} className='form-group'>
+        <form onSubmit={e => e.preventDefault()}>
           <input
             type='text'
-            className='form-control'
             required
             name='user'
             value={user}
             onChange={this.handleValueChange}
-            placeholder='Введите ваш логин'
+            placeholder='Login'
           />
           <input
             type='password'
-            className='form-control'
             required
             name='password'
             value={password}
             onChange={this.handleValueChange}
-            placeholder='Введите ваш пароль'
+            placeholder='Password'
           />
-          <button type='submit' onClick={this.login} class='btn btn-primary'>
-            Войти
+          <button type='submit' onClick={this.login}>
+            Enter
           </button>
         </form>
       </div>

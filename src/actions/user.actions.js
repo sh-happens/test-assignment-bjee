@@ -1,7 +1,5 @@
 import { userConstants } from "./../constants";
-// import { cardsService } from "./../services";
 import { alertActions } from "./";
-// import { history } from "./../helpers";
 
 export const userActions = {
   login,
@@ -12,10 +10,10 @@ function login(username, password) {
   return dispatch => {
     if (username === "admin" && password === "123") {
       dispatch(success(username));
-      dispatch(alertActions.success("Вы успешно вошли в систему!"));
+      dispatch(alertActions.success("You have successfully loggd in!"));
     } else {
       dispatch(failure());
-      dispatch(alertActions.error("Проверьте введенные данные!"));
+      dispatch(alertActions.error("Something's wrong!"));
     }
   };
 
